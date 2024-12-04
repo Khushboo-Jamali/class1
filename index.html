@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="name"></h1>
+    <h1 id="salary"></h1>
+
+    <script>
+      fetch("./data.json", {})
+        .then((b) => {
+          return b.json();
+        })
+        .then((j) => {
+          let user = j.users;
+          let element = document.querySelector("#name");
+          //    console.log(user.find((b)=>b.name=="Khushboo"));
+
+          user.map((data, index) => {
+            element.innerHTML += `<li> ${data.name}</li>`;
+            element.innerHTML += `<li> ${data.salary}</li>`;
+            if (data.status == true) {
+              // element.innerHTML += `<li> ${data.name}</li>`;
+              // element.innerHTML += `<li> ${data.salary}</li>`;
+              element.innerHTML += `<li> ${data.status}</li> <br>`;
+            }
+
+            // if (data.name.includes("h")) {
+            // element.innerHTML += `<li> ${data.name}</li>`;
+            // element.innerHTML += `<li> ${data.salary}</li>`;
+            // element.innerHTML += `<li> ${data.status}</li> <br>`;
+            //}
+          });
+          // document.querySelector('#name').innerHTML = j.user[1].name
+          // document.querySelector('#salary').innerHTML = j.user[2].name
+        });
+    </script>
+  </body>
+</html>
